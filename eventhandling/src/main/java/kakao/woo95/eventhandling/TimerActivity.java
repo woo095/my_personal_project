@@ -60,7 +60,7 @@ public class TimerActivity extends AppCompatActivity {
         try{
             for(int i =0;i<10;i++){
                 Thread.sleep(2000);
-                lblTime.setText("i="+i);
+                lblTime.setText("i="+i);//한꺼번에 모아 출력하기에 9로 출력됨
                 Log.e("i", i + "");
             }
         } catch (Exception e){
