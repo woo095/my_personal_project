@@ -47,6 +47,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    //검색
     public Item findItem(String itemname){
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = db.rawQuery("select * from item where itemname = " + "\"" + itemname + "\"",null);
@@ -59,7 +60,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
             item.set_itemname(cursor.getString(1));
             item.set_quantity(Integer.parseInt(cursor.getString(2)));
             cursor.close();
-        } else {
+        } else { //없을경우 null 리턴
             item = null;
         }
         db.close();
