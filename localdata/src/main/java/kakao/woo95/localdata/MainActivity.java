@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 fis.close();
                 //editText.setText("기록 성공!");
+                editText.setText(new String(data));
                 Toast.makeText(getApplicationContext(),"읽기 성공",Toast.LENGTH_LONG).show();
             } catch (Exception e){
                 Log.e("예외", e.getLocalizedMessage());
