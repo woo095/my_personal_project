@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="oop">
+        <item>Encapsulation</item>
+        <item>Inheritance</item>
+        <item>Polymorphism</item>
+        <item>Information Hidden</item>
+        <item>Abstract</item>
+    </string-array>
+</resources>
