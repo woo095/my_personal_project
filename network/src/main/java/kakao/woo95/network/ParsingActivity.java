@@ -48,7 +48,7 @@ public class ParsingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_parsing);
 
         Button btnHTML = (Button)findViewById(R.id.btnHTML);
-        btnHTML.setOnClickListener(v -> {
+        btnHTML.setOnClickListener(v -> {//HTML 파싱
             new Thread(){
                 @Override
                 public void run() {
@@ -119,7 +119,7 @@ public class ParsingActivity extends AppCompatActivity {
 
         //XML Parsing 버튼의 클릭 이벤트 작성
         Button btnXML = (Button)findViewById(R.id.btnXML);
-        btnXML.setOnClickListener(v -> {
+        btnXML.setOnClickListener(v -> { //XML 파싱
             new Thread(){
                 @Override
                 public void run() {
