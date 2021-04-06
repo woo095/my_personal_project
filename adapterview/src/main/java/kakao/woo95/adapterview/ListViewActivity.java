@@ -6,6 +6,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.SparseBooleanArray;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -51,7 +52,8 @@ public class ListViewActivity extends AppCompatActivity {
         listview.setDivider(new ColorDrawable(Color.CYAN));
         listview.setDividerHeight(3);
         //listview의 선택모드 설정
-        listview.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        //listview.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        listview.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
@@ -100,7 +102,8 @@ public class ListViewActivity extends AppCompatActivity {
             //작업을 수행
             //수행 결과를 출력
 
-            int pos = listview.getCheckedItemPosition();
+            //하나만 삭제
+            /*int pos = listview.getCheckedItemPosition();
             
             if(pos < 0 || pos >= list.size()){
                 Snackbar.make(getWindow().getDecorView().getRootView(),"아이템이 선택되지 않아서 삭제할 수 없습니다.",Snackbar.LENGTH_LONG).show();
@@ -109,7 +112,24 @@ public class ListViewActivity extends AppCompatActivity {
 
             //작업을 수행
             list.remove(pos);
-            adapter.notifyDataSetChanged();;
+            adapter.notifyDataSetChanged();*/
+            SparseBooleanArray sb = listview.getCheckedItemPositions();
+            //유효성 검사
+            if(sb.size()<=0){
+                Snackbar.make(getWindow().getDecorView().getRootView(),"리스트 뷰에 데이터가 없습니다.",Snackbar.LENGTH_LONG).show();
+                return;
+            }
+            
+            //배열 순회
+            //배열을 순회하면서 true 이면 삭제
+            //앞에서부터 진행하면 안되고 뒤에서부터 진행
+            for(int i=listview.getCount() - 1; i>=0;i--){
+                if(sb.get(i) == true){
+                    list.remove(i);
+                }
+            }
+            listview.clearChoices();
+            adapter.notifyDataSetChanged();
 
             listview.clearChoices();
         });
