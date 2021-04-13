@@ -2,11 +2,14 @@ package kakao.woo95.multimedia;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.VideoView;
+
+import com.google.android.material.snackbar.Snackbar;
 
 public class VideoPlayActivity extends AppCompatActivity {
 
@@ -31,6 +34,13 @@ public class VideoPlayActivity extends AppCompatActivity {
         btnstart.setOnClickListener(v -> {
             videoView.seekTo(0);
             videoView.start();
+        });
+
+        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                Snackbar.make(getWindow().getDecorView().getRootView(),"재생 준비 완료", Snackbar.LENGTH_LONG).show();
+            }
         });
     }
 }
