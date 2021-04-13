@@ -15,13 +15,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BroadcastReceiver brOn = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                Log.e("park","screen On");
-            }
-        };
-        registerReceiver(brOn, new IntentFilter(Intent.ACTION_SCREEN_ON));
-        unregisterReceiver(brOn);
     }
 }
